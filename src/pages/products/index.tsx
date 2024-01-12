@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { QueryKeys, fetcher } from "../../queryClient";
-import { ProductItem } from "../../Components/ProductItem";
+import { ProductItem } from "../../Components/product/Item";
 
-const index = () => {
+const ProductList = () => {
   const { data } = useQuery<itemTypes[]>({
     queryKey: [QueryKeys.PRODUCTS],
     queryFn: () =>
@@ -16,6 +16,7 @@ const index = () => {
 
   return (
     <div>
+      <h2>상품 목록</h2>
       <ul className="products">
         {data?.map((item: itemTypes) => (
           <ProductItem key={item.id} {...item} />
@@ -24,4 +25,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default ProductList;
